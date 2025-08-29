@@ -1,0 +1,46 @@
+<!-- home page -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+
+<body>
+    <h1>Wing's MessageBoard</h1>
+
+    <% if (locals.user) {%>
+        <h1>WELCOME BACK <%= user.un %>
+        </h1>
+
+        <button><a href="/log-out">Log Out</a></button>
+        <% if (!user.ismember) {%>
+            <button><a href="/join-club">Become A Member</a></button>
+            <% } %>
+                <button><a href="/new-message">New Message</a></button>
+                <ul>
+                    <% messages.map((message)=> { %>
+                        <li>
+                            <h3>
+                                <%= message.title %>
+                            </h3>
+                            <p>
+                                <%= message.userid %>
+                            </p>
+                            <p>
+                                <%= message.message %>
+                            </p>
+                            <p>
+                                <%= message.date %>
+                            </p>
+                        </li>
+                        <% }) %>
+                </ul>
+                <% } else { %>
+                    <button><a href="/sign-up">Sign Up</a></button>
+                    <button><a href="/log-in">Log In</a></button>
+                    <%}%>
+</body>
+
+</html>
