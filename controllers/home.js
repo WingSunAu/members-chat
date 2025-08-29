@@ -14,7 +14,7 @@ async function getMessages(req, res) {
     console.log("USERS: \n", users);
     console.log("MESSAGES: \n", messages);
     console.log("SESSIONS: \n", sessions);
-    res.render("index", { messages: messages });
+    res.render("index", { user: req.user, messages: messages });
 }
 module.exports = {
     getMessages

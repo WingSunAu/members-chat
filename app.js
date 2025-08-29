@@ -4,7 +4,6 @@ const passport = require("passport");
 const path = require("node:path");
 const pool = require("./db/pool");
 const indexRouter = require("./routes/indexRouter");
-// check if need to also include separately in router, might not since router is used in app.js
 require('./config/passport');
 
 const app = express();
@@ -17,7 +16,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(session({
     secret: "cats",
     resave: false,
-    // set to true to show (and save to store) all (including empty/unmodified session objects)
     saveUninitialized: true,
     store: new (require('connect-pg-simple')(session))({
         pool: pool,

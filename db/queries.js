@@ -25,8 +25,8 @@ async function getAllUsers() {
     return rows;
 }
 
-async function insertUser(name, un, pw, isMember) {
-    await pool.query("INSERT INTO users (name, un, pw, isMember) VALUES ($1, $2, $3, $4)", [name, un, pw, isMember]);
+async function insertUser(name, un, pw) {
+    await pool.query("INSERT INTO users (name, un, pw, ismember) VALUES ($1, $2, $3, $4)", [name, un, pw, false]);
 }
 
 async function getAllMessages() {
